@@ -1,0 +1,297 @@
+/*-------------------------------------------------------------------
+16. Media Query
+-------------------------------------------------------------------*/
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media  screen and (max-width:1400px) {
+    .rating-box { font-weight: 400; color: #252328; position: inherit; top: -5px; }
+    .cta-wrapper { background-position: 65%; }
+}
+@media  screen and (max-width:1200px) {
+    /* #navigation>ul>li>a { 
+        padding: 18px 0px;  
+         font-size: 13px; 
+    } */
+    #navigation>ul>li.has-sub>a { padding-right: 28px; }
+    .vendor-content-sidebar .vendor-meta { top: 0px; }
+    .vendor-form { padding-top: 30px; }
+    .couple-form { padding-top: 60px; }
+    .venue-thumbnail-carousel .owl-theme .owl-nav .owl-next { position: absolute; right: -38px; }
+    .venue-thumbnail-carousel .owl-theme .owl-nav .owl-prev { position: absolute; top: 40%; left: -38px; }
+    .real-wedding-single-img { background-position: 75%; }
+    .leftsocial-icon { left: -29px; }
+
+    /*--------------- dashboard-media-query --------------- */
+    .dashboard-pricing .price-sign { left: 63px; }
+    .dashboard-list-content { padding: 27px 0px; }
+    .dashboard-list-btn { padding: 31px 26px; }
+
+    /*--------------- index-2 --------------- */
+    .cta-wrapper { background-position: 65%; }
+    .cta-section { padding-top: 80px; padding-bottom: 80px; color: #fff; }
+    /*Custom*/
+    .header-border-right:before {
+        left: -64px;
+        border-bottom: 51px solid #ef3f2e;
+        border-left: 65px solid #1c3586;
+    }
+    .header-btn .btn-sm {
+        padding: 8px 8px;
+    }
+    .header-top{
+        font-size: 14px;
+    }
+    #navigation>ul>li:last-child {
+        margin-left: 70px !important;
+    }
+}/*max-width:1200px*/
+
+/* Medium Devices, Desktops */
+@media  screen and (max-width:992px) {
+
+    /*--------------- dashboard-media-query --------------- */
+    .todo-form-btn { margin-top: 0px; }
+    #navigation>ul>li:last-child {
+        margin-left: 38px !important;
+    }
+    #navigation {
+        height: auto !important;
+        padding-top: 10px !important;
+    }
+
+}/*max-width:992px*/
+
+@media only screen and (max-width:785px) {
+    #navigation {
+        display: block !important;
+    }    
+    #navigation>ul>li:last-child,.header-btn a:last-child {
+        margin-left: 0 !important;
+    }
+    .header-btn a:last-child {
+        margin-left: 0 !important;
+    }
+    #navigation {
+        padding-top: 30px !important;
+    }
+    #navigation>ul>li:last-child a {
+        margin-bottom: 15px;
+    }
+}/*max-width:785px*/
+
+/* Small Devices, Tablets */
+@media  screen and (max-width:768px) {
+    #navigation ul ul ul { top: 0px; }
+    #navigation ul ul li { top: 0px; }
+    .search-head { margin-bottom: 30px; padding: 0px 80px; }
+    .search-item { display: inline-block; float: left; width: 38%; margin-right: 5px; }
+    .hero-section { padding-top: 60px; padding-bottom: 60px; }
+    .page-header { min-height: initial; }
+    .page-caption { padding-top: 65px; padding-bottom: 65px; }
+    .venue-pageheader .page-section { padding-top: 150px; }
+    .venue-thumbnail-carousel .owl-theme .owl-nav .owl-next { position: initial; }
+    .venue-thumbnail-carousel .owl-theme .owl-nav .owl-prev { position: initial; }
+    .vendor-content-sidebar { padding: 20px 20px 20px 20px; }
+    .vendor-content-sidebar .vendor-meta { top: 10px; }
+    .childern { padding-left: 0px; }
+    .content { padding-bottom: 40px; padding-top: 40px; }
+    .space-medium { padding-bottom: 40px; padding-top: 40px; }
+    .price-sign { position: initial; }
+    .feature-left .feature-icon { margin-bottom: 15px; }
+    .vendor-bg-image { padding-bottom: 200px; }
+    .couple-bg-image { padding-bottom: 260px; }
+    .review-sidebar { border-right: none; }
+    .realwed-caption { padding-top: 60px; padding-bottom: 60px; }
+    .real-wedding-single-title { font-size: 36px; }
+    .real-wedding-single-img { background-position: 75%; }
+    .leftsocial-icon { position: initial; left: initial; margin-bottom: 10px; }
+    .leftsocial-icon .icon-square-outline { display: inline-block; margin-bottom: 5px; }
+    .metrics { padding: 50px !important; }
+
+    /*--- vendor list view ------*/
+    .list-view .vendor-content { padding: 16px 16px 12px 20px; }
+    .list-view .vendor-meta { margin-top: 20px; }
+
+    /*--------------- index-2  --------------- */
+    .navigation-second { border-top: none; margin-top: 15px; margin-bottom: 12px; }
+    .hero-section-caption { padding-bottom: 50px; padding-top: 70px; }
+    .hero-section-second { min-height: initial; }
+    .hero-section-second .search-head-title { font-size: 38px; line-height: 40px; }
+    .cta-section { padding-top: 70px; padding-bottom: 70px; }
+    .cta-wrapper { background-position: 65%; }
+
+    /*--------------- dashboard-media-query --------------- */
+    .todo-list-btn { text-align: left; }
+    .todo-form-btn { margin-top: 0px; }
+    .dashboard-list-content { padding: 19px 29px; }
+    .dashboard-list-btn { padding: 0px 0px 22px 26px; text-align: left; }
+
+    /*--------------- dashboard-sidebar --------------- */
+    .navbar-expand-lg { top: 0; }
+    .dashboard-header { position: relative; }
+    .dashboard-content { margin-left: auto; }
+    .dashboard-wrapper { padding-top: 40px; }
+
+    /*--------------- index-3 --------------- */
+    .hero-section-third { padding-top: 120px; }
+    .feature-section { margin-top: 50px; }
+    .hero-section-third .feature-left { border-right: transparent; }
+    .hero-section-third .search-head-title { font-size: 34px; line-height: 40px; }
+    .header-transparent { position: relative; background-color: #48484f; border-bottom-color: #48484f; }
+    .header-transparent #navigation.small-screen .submenu-button { position: absolute; z-index: 99; right: 0; top: 0; display: block; border-left: 1px solid rgb(112, 111, 112); height: 50px; width: 46px; cursor: pointer; }
+    .header-transparent #navigation.small-screen ul li { width: 100%; border-top: 1px solid rgb(112, 111, 112); }
+    .header-transparent #navigation.small-screen .submenu-button:before { position: absolute; top: 19px; right: 22px; display: block; width: 2px; height: 8px; background: #fff; content: ''; }
+    .header-transparent #navigation.small-screen .submenu-button:after { position: absolute; top: 22px; right: 19px; width: 8px; height: 2px; display: block; background: #fff; content: ''; }
+    .header-transparent #navigation.small-screen ul ul li a { color: #fff; background: none; }
+
+    .st-tab .registerArea, .st-tab .loginArea {
+        padding: 30px 25px !important;
+    }
+    .introducerArea .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-12.text-right {
+        text-align: left !important;
+        padding-left: 0;
+    }
+}/*max-width:768px*/
+
+/* Extra Small Devices, Phones */
+@media  screen and (max-width:480px) {
+    #navigation ul ul ul { top: 0px; }
+    .header-logo { padding-top: 10px; text-align: center;}
+    .page-header { min-height: initial; }
+    .page-caption { padding-top: 65px; padding-bottom: 65px; }
+    .search-block { margin-top: 100px; }
+    .search-head { margin-bottom: 30px; padding: 0px 10px; }
+    .search-item { display: inline-block; float: left; width: 100%; margin-right: 5px; margin-bottom: 5px; }
+    .nice-select { margin-bottom: 8px; }
+    .search-head-title { font-size: 22px; }
+    .vendor-heading { font-size: 28px; line-height: 31px; }
+    .hero-section { padding-bottom: 70px; }
+    .venue-thumbnail-carousel .owl-theme .owl-nav .owl-next { position: initial; }
+    .venue-thumbnail-carousel .owl-theme .owl-nav .owl-prev { position: initial; }
+    .space-medium { padding-top: 40px; padding-bottom: 40px; }
+    .vendor-content-sidebar { padding: 20px 20px 20px 20px; }
+    .vendor-content-sidebar .vendor-meta { top: 10px; }
+    .filter-bg { margin-bottom: 30px; }
+    .scroll-content { height: initial; }
+    .vendor-info { margin-bottom: 40px; }
+    .vendor-info .rating-box { text-align: center; display: inherit; position: initial; }
+    .author-img { float: initial; margin-bottom: 20px; }
+    .childern { padding-left: 0px; }
+    .price-sign { position: initial; }
+    .contact-icon { margin-bottom: 74px; }
+    .content { padding-bottom: 40px; padding-top: 40px; }
+    .venue-highlight-meta { float: none; font-weight: 500; }
+    .review-sidebar { border-bottom: 1px solid #e5e6e7; border-right: none; margin-bottom: 30px; padding-bottom: 20px; }
+    .realwed-caption { padding-top: 60px; padding-bottom: 60px; }
+    .real-wedding-single-title { font-size: 36px; }
+    .real-wedding-single-img { background-position: 75%; }
+    .leftsocial-icon { position: initial; left: initial; margin-bottom: 10px; }
+    .leftsocial-icon .icon-square-outline { display: inline-block; margin-bottom: 5px; }
+
+    /*--- Footer social media space ---*/
+
+    /*-------- vendor form tab content  ----*/
+    .st-tab .tab-content { padding: 40px 20px; }
+
+    /*--------------- dashboard-media-query --------------- */
+    .custom-radio-space { margin-top: 0px; margin-bottom: 20px; }
+    .upload-profile-input { position: initial; }
+    .todo-list-btn { text-align: left; }
+    .todo-form-btn { margin-top: none; }
+    .dashboard-list-content { padding: 28px 33px; }
+    .dashboard-list-btn { padding: 0px 0px 18px 37px; text-align: left; }
+    .dashboard-dropdown-menu { top: 25px !important; }
+
+    /*--------------- Index-2 --------------- */
+    .hero-section-second { min-height: initial; }
+    .navigation-second { border-top: none; margin-top: 15px; margin-bottom: 12px; }
+    .hero-section-caption { padding-bottom: 50px; padding-top: 100px; }
+    .hero-section-second .search-head-title { font-size: 38px; line-height: 40px; }
+    .cta-section { padding-top: 70px; padding-bottom: 70px; }
+
+    /*--------------- index-3 --------------- */
+    .hero-section-third { padding-top: 100px; }
+    .feature-section { margin-top: 60px; }
+    .hero-section-third .feature-left { min-height: initial; border-bottom: 1px solid rgba(246, 245, 247, .2); padding: 10px; }
+    .header-transparent { position: relative; background-color: #48484f; border-bottom-color: #48484f; }
+    .header-transparent #navigation.small-screen .submenu-button { position: absolute; z-index: 99; right: 0; top: 0; display: block; border-left: 1px solid rgb(112, 111, 112); height: 50px; width: 46px; cursor: pointer; }
+    .header-transparent #navigation.small-screen ul li { width: 100%; border-top: 1px solid rgb(112, 111, 112); }
+    .header-transparent #navigation.small-screen .submenu-button:before { position: absolute; top: 19px; right: 22px; display: block; width: 2px; height: 8px; background: #fff; content: ''; }
+    .header-transparent #navigation.small-screen .submenu-button:after { position: absolute; top: 22px; right: 19px; width: 8px; height: 2px; display: block; background: #fff; content: ''; }
+    .header-transparent #navigation.small-screen ul ul li a { color: #fff; background: none; }
+
+    .tiny12{
+        max-width: 100% !important; 
+        margin: auto;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+    }
+    #navigation {
+        padding-top: 10px !important;
+    }
+}/*max-width:480px*/
+/* @media only screen and (max-width: 575px) and (min-width: 400px){
+    #navigation {
+        padding-top: 38px !important;
+    }
+} */
+
+/* Custom, iPhone Retina */
+@media  screen and (max-width:320px) {
+    #navigation ul ul ul { top: 0px; }
+    .header-logo { padding-top: 10px; padding-bottom: 16px; }
+    .page-header { min-height: initial; }
+    .page-caption { padding-top: 65px; padding-bottom: 65px; }
+    .search-block { margin-top: 100px; }
+    .search-head { margin-bottom: 30px; padding: 0px 10px; }
+    .search-item { display: inline-block; float: left; width: 100%; margin-right: 5px; margin-bottom: 5px; }
+    .nice-select { margin-bottom: 8px; }
+    .search-head-title { font-size: 22px; }
+    .vendor-heading { font-size: 28px; line-height: 31px; }
+    .hero-section { padding-bottom: 70px; }
+    .venue-thumbnail-carousel .owl-theme .owl-nav .owl-next { position: initial; }
+    .venue-thumbnail-carousel .owl-theme .owl-nav .owl-prev { position: initial; }
+    .space-medium { padding-top: 40px; padding-bottom: 40px; }
+    .vendor-content-sidebar { padding: 20px 20px 20px 20px; }
+    .vendor-content-sidebar .vendor-meta { top: 10px; }
+    .filter-bg { margin-bottom: 30px; }
+    .scroll-content { height: initial; }
+    .vendor-info { margin-bottom: 40px; }
+    .vendor-info .rating-box { text-align: center; display: inherit; position: initial; }
+    .author-img { float: initial; margin-bottom: 20px; }
+    .childern { padding-left: 0px; }
+    .price-sign { position: initial; }
+    .contact-icon { margin-bottom: 74px; }
+    .content { padding-bottom: 40px; padding-top: 40px; }
+    .venue-highlight-meta { float: none; font-weight: 500; }
+    .review-sidebar { border-bottom: 1px solid #e5e6e7; border-right: none; margin-bottom: 30px; padding-bottom: 20px; }
+    .realwed-caption { padding-top: 60px; padding-bottom: 60px; }
+    .real-wedding-single-title { font-size: 36px; }
+    .real-wedding-single-img { background-position: 75%; }
+    .leftsocial-icon { position: initial; left: initial; margin-bottom: 10px; }
+    .leftsocial-icon .icon-square-outline { display: inline-block; margin-bottom: 5px; }
+
+    /*--- Footer social media space ---*/
+
+    /*-------- vendor form tab content  ----*/
+    .st-tab .tab-content { padding: 40px 20px; }
+
+    /*--------------- dashboard-media-query --------------- */
+    .custom-radio-space { margin-top: 0px; margin-bottom: 20px; }
+    .upload-profile-input { position: initial; }
+    .todo-list-btn { text-align: left; }
+    .todo-form-btn { margin-top: none; }
+    .dashboard-list-content { padding: 28px 33px; }
+    .dashboard-list-btn { padding: 0px 0px 18px 37px; text-align: left; }
+    .dashboard-dropdown-menu { top: 25px !important; }
+
+    /*--------------- Index-2 --------------- */
+    .hero-section-second { min-height: initial; }
+    .navigation-second { border-top: none; margin-top: 15px; margin-bottom: 12px; }
+    .hero-section-caption { padding-bottom: 50px; padding-top: 100px; }
+    .hero-section-second .search-head-title { font-size: 38px; line-height: 40px; }
+    .cta-section { padding-top: 70px; padding-bottom: 70px; }
+}/*max-width:320px*/

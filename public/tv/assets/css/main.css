@@ -1,0 +1,166 @@
+/* General Css */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding-right: 0 !important
+}
+
+body.modal-open {
+    width: 100% !important;
+    padding-right: 0 !important;
+    overflow-y: scroll !important;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+.wrapper {
+    overflow: hidden;
+}
+
+select,
+input,
+textarea,
+.btn:focus,
+.btn-default:active:focus {
+    outline: 0;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    color: #6f6d72;
+    text-rendering: optimizeLegibility;
+    font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #252328;
+    margin: 0px 0px 15px 0px;
+    font-weight: 400;
+    font-family: 'Rubik', sans-serif;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 28px;
+    line-height: 38px;
+}
+
+h3 {
+    font-size: 20px;
+    line-height: 28px;
+}
+
+h4 {
+    font-size: 18px;
+    line-height: 26px;
+}
+
+h5 {
+    font-size: 16px;
+    line-height: 26px;
+}
+
+h6 {
+    font-size: 14px;
+}
+
+p {
+    margin: 0px 0px 20px 0px;
+    -webkit-font-smoothing: antialiased;
+}
+
+p:last-child {
+    margin: 0px;
+}
+
+a {
+    color: #252328;
+    -webkit-font-smoothing: antialiased;
+}
+
+a:hover {
+    color: #1c3586;
+    text-decoration: none;
+}
+
+a:active,
+a:hover {
+    outline: 0;
+    text-decoration: none;
+}
+
+ol,
+ul {
+    -webkit-font-smoothing: antialiased;
+}
+
+/*================================
+            Home
+================================== */
+.fullscreen_slider_content {
+    color: #e6e2ec;
+    padding: 25px 0 0;
+}
+
+.fullscreen_slider_txt h2 {
+    font-weight: 500;
+    color: #e6c90b;
+    font-size: 2.25rem;
+    margin-bottom: 10px;
+}
+
+.fullscreen_slider_content table.table {
+    margin-top: 10px;
+}
+.fullscreen_slider_content .table td, .fullscreen_slider_content .table th {
+    padding: .5rem;
+}
+footer{
+    background: #1c3586;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.footer a {
+    color: #ef3f2e;
+    transition: .5s;
+}
+
+.footer a:hover {
+    color: #e6c90b;
+}
+
+.footer p {
+    padding: 5px 0;
+    color: #e6e2ec;
+}
