@@ -34,7 +34,7 @@
         <div class="hpanel">
             <div class="panel-body">
                 <h2 class="font-light m-b-xs">
-                    <h3>Supplier Approval</h3>
+                    <h3>DNS Approval</h3>
                 </h2>
             </div>
             @include('layouts.flash')
@@ -46,7 +46,7 @@
                 <div class="hpanel">
                     <div class="panel-heading hbuilt">
 
-                        <h3>Supplier Approval</h3>
+                        <h3>DNS Approval</h3>
                     </div>
                     <div class="panel-body">
 
@@ -246,7 +246,7 @@
                                             <td>{{ $supName->mobile_number}}</td>
                                             <td>{{ $sc->date }}</td>
                                             <td>{{ $sc->letter_no }}</td>
-                                           
+
                                         </tr>
 
                                     @endforeach

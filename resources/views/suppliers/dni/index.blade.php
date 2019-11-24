@@ -34,7 +34,7 @@
         <div class="hpanel">
             <div class="panel-body">
                 <h2 class="font-light m-b-xs">
-                    <h3>DNI</h3>
+                    <h3>DNI Clearance</h3>
                 </h2>
             </div>
 
@@ -46,7 +46,7 @@
                 <div class="hpanel">
                     <div class="panel-heading hbuilt">
 
-                        <h3>DNI</h3>
+                        <h3>DNI Clearance</h3>
                     </div>
                     <div class="panel-body">
 

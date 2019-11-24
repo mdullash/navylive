@@ -45,12 +45,13 @@
             <div class="col-lg-12">
                 <div class="hpanel">
                     <div class="panel-heading hbuilt">
-                            <p class="text-center" style="margin: 0;font-weight: bolder;font-size: 20px;text-align: center;border-bottom: 2px solid black;">Form Purchase copy</p>
+                            <h4 class="text-center" >Enlistment form</h4>
+                            <h6 class="text-center" >Collection received</h6>
                     </div>
-                        <div class="panel-body">
+                        <div style="margin-top:5px" >
 
-                            <table class="table middle-align" style="width: 100%;">
-                                
+                            <table style="width: 100%;">
+
                                 <tbody>
 
                                 @if (!empty($sheCdInfo))
@@ -81,8 +82,8 @@
                                         <td>Purchase Date:</td>
                                         <td>{!! date('d-m-Y',strtotime($sheCdInfo->created_at)) !!}</td>
                                     </tr>
-                            
-                                 @endif   
+
+                                 @endif
                                 </tbody>
                             </table><!---/table-responsive-->
 

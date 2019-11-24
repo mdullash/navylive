@@ -157,6 +157,8 @@
                                     <!-- <th class="text-center" width="">{{'Tender Open'}}</th> -->
 
                                     <th class="text-center" width="">{{'Tender Type'}}</th>
+{{--                                    <th class="text-center" width="">{{'Tender Priority'}}</th>--}}
+{{--                                    <th class="text-center" width="">{{'Tender Nature'}}</th>--}}
                                     <th class="text-center" width="">{{'Specification'}}</th>
                                     <th class="text-center" width="">{{'Notice'}}</th>
                                     <th class="text-center">{{trans('english.STATUS')}}</th>
@@ -181,10 +183,10 @@
                                             <td>{{++$sl}}</td>
                                             <td>{{$sc->tender_title}}</td>
                                             <td>{{$sc->tender_number}}</td>
-                                            <td>{{$sc->ref_tender_id}}</td>
+
                                             <td>{{date('d-m-Y',strtotime($sc->tender_opening_date))}}</td>
                                             <td>{{$sc->supplyCategoryName->name}}</td>
-                                            <td>{{$sc->nsdName->name}}</td>
+
                                             <!-- <td>
                                                 @if(!empty($sc->open_tender))
                                                     {!! 'Yes' !!}
@@ -192,12 +194,7 @@
                                                     {!! 'No' !!}
                                                 @endif
                                             </td> -->
-                                            <td>
-                                                @if(!empty($sc->valid_date_from)) {!! date('d-m-Y', strtotime($sc->valid_date_from)) !!} @endif
-                                            </td>
-                                            <td>
-                                                @if(!empty($sc->valid_date_to)) {!! date('d-m-Y', strtotime($sc->valid_date_to)) !!} @endif
-                                            </td>
+
                                             <td>
                                                 @if($sc->tender_type == 1) {!! 'LTM- Limited Tender Method' !!}
                                                 @elseif($sc->tender_type == 2) {!! 'OTM- Open Tender Method' !!}
@@ -206,17 +203,7 @@
                                                 @elseif($sc->tender_type == 5) {!! 'DPM- Direct Purchase Method' !!}
                                                 @endif
                                             </td>
-                                            <td>
-                                                @if($sc->tender_priority == 1) {!! 'Normal' !!}
-                                                @elseif($sc->tender_priority == 2) {!! 'Immediate' !!}
-                                                @elseif($sc->tender_priority == 3) {!! 'OPS Immediate (Operational Immediate)' !!}
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if($sc->tender_nature == 1) {!! 'Line Item' !!}
-                                                @elseif($sc->tender_nature == 2) {!! 'Lot Item' !!}
-                                                @endif
-                                            </td>
+
                                             <td style="text-align: center;">
                                                 @if(!empty($sc->specification))
                                                     <a href="{{url('tender/specification-pdf/'.encrypt($sc->id))}}" target="_blank"><img width="30" height="30" src="{{URL::to('/')}}/public/uploads/gallery/pdf_icon.png"></a>

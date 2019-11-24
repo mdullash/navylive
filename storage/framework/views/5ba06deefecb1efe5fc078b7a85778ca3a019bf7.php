@@ -253,25 +253,25 @@ $currentPath = Request::path();
 
 
                         <?php if (!empty($aclList[48][1])) { ?>
-                        <li <?php $current = ($currentControllerName1 == 'waiting-for-clarence') ? 'active' : ''; ?> class="<?php echo $current; ?>"><a href="<?php echo e(URL::to('suppliers/waiting-for-clarence/index/pending')); ?>">Waiting for clarence</a></li>
+                        <li <?php $current = ($currentControllerName1 == 'waiting-for-clarence') ? 'active' : ''; ?> class="<?php echo $current; ?>"><a href="<?php echo e(URL::to('suppliers/waiting-for-clarence/index/pending')); ?>">Forwarding For Clearance</a></li>
                         <?php }   ?>
 
 
                         <?php if (!empty($aclList[49][1])) { ?>
-                        <li <?php $current = ($currentControllerName1 == 'dni') ? 'active' : ''; ?> class="<?php echo $current; ?>"><a href="<?php echo e(URL::to('suppliers/dni/index/pending')); ?>">DNI</a></li>
+                        <li <?php $current = ($currentControllerName1 == 'dni') ? 'active' : ''; ?> class="<?php echo $current; ?>"><a href="<?php echo e(URL::to('suppliers/dni/index/pending')); ?>">DNI Clearance</a></li>
                         <?php }   ?>
 
                         <?php if (!empty($aclList[50][1])) { ?>
-                        <li <?php $current = ($currentControllerName1 == 'npm') ? 'active' : ''; ?> class="<?php echo $current; ?>"><a href="<?php echo e(URL::to('suppliers/npm/index/pending')); ?>">NPM</a></li>
+                        <li <?php $current = ($currentControllerName1 == 'npm') ? 'active' : ''; ?> class="<?php echo $current; ?>"><a href="<?php echo e(URL::to('suppliers/npm/index/pending')); ?>">NPM Verification</a></li>
                         <?php }   ?>
 
 
                         <?php if (!empty($aclList[51][1])) { ?>
-                        <li <?php $current = ($currentControllerName1 == 'dni-npm-approval') ? 'active' : ''; ?> class="<?php echo $current; ?>"><a href="<?php echo e(URL::to('suppliers/dni-npm-approval')); ?>">DNS Approval</a></li>
+                        <li <?php $current = ($currentControllerName1 == 'dni-npm-approval') ? 'active' : ''; ?> class="<?php echo $current; ?>"><a href="<?php echo e(URL::to('suppliers/dni-npm-approval')); ?>">Forwarding For Approval</a></li>
                         <?php }   ?>
 
                         <?php if (!empty($aclList[56][1])) { ?>
-                        <li <?php $current = ($currentControllerName1 == 'supplier-approval') ? 'active' : ''; ?> class="<?php echo $current; ?>"><a href="<?php echo e(URL::to('suppliers/supplier-approval')); ?>"> Supplier Approval</a></li>
+                        <li <?php $current = ($currentControllerName1 == 'supplier-approval') ? 'active' : ''; ?> class="<?php echo $current; ?>"><a href="<?php echo e(URL::to('suppliers/supplier-approval')); ?>">DNS Approval</a></li>
                         <?php }   ?>
 
 
@@ -348,7 +348,7 @@ $currentPath = Request::path();
                     <?php if (!empty($aclList[19][1])) { ?>
                     <li <?php $current = ($currentControllerName == 'cat-pro-supplier-list') ? 'active' : ''; ?> class="<?php echo $current; ?>"><a href="<?php echo e(URL::to('cat-pro-supplier-list')); ?>"><?php echo e('Category Wise Supplier List'); ?></a></li>
                     <?php }   ?>
-                    
+
                     <?php if (!empty($aclList[30][1])) { ?>
                     <li <?php $current = ($currentControllerName == 'budget-code-wise-item') ? 'active' : ''; ?> class="<?php echo $current; ?>"><a href="<?php echo e(URL::to('budget-code-wise-item')); ?>"><?php echo e('Budget Code Wise Item'); ?></a></li>
                     <?php }   ?>
@@ -393,7 +393,7 @@ $currentPath = Request::path();
                     <?php if (!empty($aclList[15][1])) { ?>
                     <li <?php $current = ($currentControllerName == 'deno') ? 'active' : ''; ?> class="<?php echo $current; ?>"><a href="<?php echo e(URL::to('deno/view')); ?>"><?php echo e('Denotation'); ?></a></li>
                     <?php }   ?>
-                    
+
                     <?php if (!empty($aclList[28][1])) { ?>
                     <li <?php $current = ($currentControllerName == 'budget_code') ? 'active' : ''; ?> class="<?php echo $current; ?>"><a href="<?php echo e(URL::to('budget_code/view')); ?>"><?php echo e('Budget Code'); ?></a></li>
                     <?php }   ?>

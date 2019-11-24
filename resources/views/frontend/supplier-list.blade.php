@@ -40,7 +40,7 @@
                         {{ Form::open(array('role' => 'form', 'url' => $a.$b.'front-supplier', 'files'=> true, 'method'=>'get', 'class' => 'form-row')) }}
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <h3 class="widget-title">filter</h3>
-                            </div>  
+                            </div>
                             {{--<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">--}}
                                 {{--<select class="wide">--}}
                                     {{--<option value="Venue Type">Vendor Type</option>--}}
@@ -52,7 +52,7 @@
                                     {{--<option value="Dress">Dress</option>--}}
                                 {{--</select>--}}
                             {{--</div>--}}
-                            
+
                             <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-8">
                                 <!-- <textarea name="key" id="" class="form-control mb-3"></textarea> -->
                                 <input type="text" name="key" id="" class="form-control mb-3" value="{!! Input::get('key') !!}" placeholder="Company Name / Supplier name">
@@ -67,7 +67,7 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="suplier_list_area">
 
-                        <table id="tenderTable" class="table table-bordered table-striped table-hover dt-responsive tenderTable" style="width:100%;">
+                        <table id="tenderTable" class="table table-bordered table-striped table-hover " style="width:100%;">
                             <!-- thead -->
                             <thead>
                                 <tr>
@@ -82,15 +82,15 @@
                             <!-- tbody -->
                             <tbody>
                                 <!-- tr -->
-                                <?php 
-                                    $sl = 1; 
+                                <?php
+                                    $sl = 1;
 
                                 ?>
                                 @if(!empty($suppliers))
 
                                     @foreach($suppliers as $sp)
                                     <?php
-                                           
+
 
                                             $nsd_n_link = '';
                                             if($sp->registered_nsd_id == 1){
@@ -119,7 +119,7 @@
                                         <tr>
                                             <th scope="row">{!! $sl++ !!}</th>
                                             <td>
-                                                <div class="vendor-img">                                       
+                                                <div class="vendor-img">
                                                     @if(!empty($sp->profile_pic))
                                                         <a href="#"><img src="{{URL::to('/')}}/public/uploads/supplier_profile/{{$sp->profile_pic}}" alt="" class="img-fluid"></a>
                                                     @else
@@ -141,9 +141,9 @@
                                                 <p class="vendor-address"> {!! $sp->company_regi_number_nsd !!}</p>
                                             </td>
                                         </tr>
-                                        
+
                                     @endforeach
-                                @endif        
+                                @endif
                             </tbody>
                         </table>
 
@@ -154,7 +154,7 @@
                 <!--this-->
                 </div><!---col-4-->
                 <!-- /.sidebar-section -->
-            </div>  <!--./row-->          
+            </div>  <!--./row-->
         </div>
     </div>
     <!-- /.supplier-list-content -->

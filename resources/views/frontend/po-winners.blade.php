@@ -83,7 +83,7 @@
                                         <div class="" style="background-color: #fff;">
                                             <!-- form-heading-title -->
 
-                                                <table id="tenderTable" class="table table-bordered table-striped table-hover dt-responsive tenderTable" style="width:100%;">
+                                                <table id="tenderTable" class="table table-bordered table-striped table-hover " style="width:100%;">
                                                       <thead>
                                                         <tr>
                                                             <th style="vertical-align: middle;">Ser</th>

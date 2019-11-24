@@ -78,7 +78,7 @@ class FrontTenderController extends Controller
                 }
                 // $data['recent_tenders'][$ct->name]->orderBy('id', 'desc');
                 $data['recent_tenders'][$ct->name]->orderby('tender_opening_date');
-                $data['recent_tenders'][$ct->name] = $data['recent_tenders'][$ct->name]->paginate(10);
+                $data['recent_tenders'][$ct->name] = $data['recent_tenders'][$ct->name]->get();
 
                 foreach ($data['recent_tenders'][$ct->name] as $a){
 
@@ -186,7 +186,7 @@ class FrontTenderController extends Controller
                 }
                 // $data['recent_tenders'][$ct->name]->orderBy('id', 'desc');
                 $data['recent_tenders'][$ct->name]->orderBy('tender_opening_date');
-                $data['recent_tenders'][$ct->name] = $data['recent_tenders'][$ct->name]->paginate(10);
+                $data['recent_tenders'][$ct->name] = $data['recent_tenders'][$ct->name]->get();
 
                 foreach ($data['recent_tenders'][$ct->name] as $a){
 
@@ -357,7 +357,7 @@ class FrontTenderController extends Controller
                     });
                 }
                 $data['recent_tenders'][$ct->name]->orderBy('id', 'desc');
-                $data['recent_tenders'][$ct->name] = $data['recent_tenders'][$ct->name]->paginate(10);
+                $data['recent_tenders'][$ct->name] = $data['recent_tenders'][$ct->name]->paginate(20);
 
                 foreach ($data['recent_tenders'][$ct->name] as $a){
 
@@ -471,7 +471,7 @@ class FrontTenderController extends Controller
                     });
                 }
                 $data['recent_tenders'][$ct->name]->orderBy('id', 'desc');
-                $data['recent_tenders'][$ct->name] = $data['recent_tenders'][$ct->name]->paginate(10);
+                $data['recent_tenders'][$ct->name] = $data['recent_tenders'][$ct->name]->paginate(20);
 
                 foreach ($data['recent_tenders'][$ct->name] as $a){
 
@@ -587,7 +587,7 @@ class FrontTenderController extends Controller
             ->get();
 
 
-        $perPage = 10;
+        $perPage = 20;
 
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
 

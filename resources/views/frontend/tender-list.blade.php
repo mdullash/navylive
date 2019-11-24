@@ -94,7 +94,7 @@
                             <div class="tenderTableArea">
                                 <h4 class="text-center">{!! $cts->name." Tender" !!}</h4>
 
-                                <table id="tenderTable" class="table table-bordered table-striped table-hover dt-responsive tenderTable" style="width:100%;">
+                                <table class="table table-bordered table-striped table-hover " style="width:100%;">
                                     <!-- thead -->
                                     <thead>
                                     <tr>
@@ -159,7 +159,7 @@
                             </div><!--./tenderTableArea-->
                             {{-- @endif --}}
 
-                            {!! $recent_tenders[$cts->name]->appends(\Input::except('page'))->render() !!}
+
                             <?php $sl = 1; ?>
                         @endif
                     @endforeach

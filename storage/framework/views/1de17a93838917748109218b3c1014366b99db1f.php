@@ -161,6 +161,8 @@
                                     <!-- <th class="text-center" width=""><?php echo e('Tender Open'); ?></th> -->
 
                                     <th class="text-center" width=""><?php echo e('Tender Type'); ?></th>
+
+
                                     <th class="text-center" width=""><?php echo e('Specification'); ?></th>
                                     <th class="text-center" width=""><?php echo e('Notice'); ?></th>
                                     <th class="text-center"><?php echo e(trans('english.STATUS')); ?></th>
@@ -186,10 +188,10 @@
                                             <td><?php echo e(++$sl); ?></td>
                                             <td><?php echo e($sc->tender_title); ?></td>
                                             <td><?php echo e($sc->tender_number); ?></td>
-                                            <td><?php echo e($sc->ref_tender_id); ?></td>
+
                                             <td><?php echo e(date('d-m-Y',strtotime($sc->tender_opening_date))); ?></td>
                                             <td><?php echo e($sc->supplyCategoryName->name); ?></td>
-                                            <td><?php echo e($sc->nsdName->name); ?></td>
+
                                             <!-- <td>
                                                 <?php if(!empty($sc->open_tender)): ?>
                                                     <?php echo 'Yes'; ?>
@@ -199,12 +201,7 @@
 
                                                 <?php endif; ?>
                                             </td> -->
-                                            <td>
-                                                <?php if(!empty($sc->valid_date_from)): ?> <?php echo date('d-m-Y', strtotime($sc->valid_date_from)); ?> <?php endif; ?>
-                                            </td>
-                                            <td>
-                                                <?php if(!empty($sc->valid_date_to)): ?> <?php echo date('d-m-Y', strtotime($sc->valid_date_to)); ?> <?php endif; ?>
-                                            </td>
+
                                             <td>
                                                 <?php if($sc->tender_type == 1): ?> <?php echo 'LTM- Limited Tender Method'; ?>
 
@@ -218,22 +215,7 @@
 
                                                 <?php endif; ?>
                                             </td>
-                                            <td>
-                                                <?php if($sc->tender_priority == 1): ?> <?php echo 'Normal'; ?>
 
-                                                <?php elseif($sc->tender_priority == 2): ?> <?php echo 'Immediate'; ?>
-
-                                                <?php elseif($sc->tender_priority == 3): ?> <?php echo 'OPS Immediate (Operational Immediate)'; ?>
-
-                                                <?php endif; ?>
-                                            </td>
-                                            <td>
-                                                <?php if($sc->tender_nature == 1): ?> <?php echo 'Line Item'; ?>
-
-                                                <?php elseif($sc->tender_nature == 2): ?> <?php echo 'Lot Item'; ?>
-
-                                                <?php endif; ?>
-                                            </td>
                                             <td style="text-align: center;">
                                                 <?php if(!empty($sc->specification)): ?>
                                                     <a href="<?php echo e(url('tender/specification-pdf/'.encrypt($sc->id))); ?>" target="_blank"><img width="30" height="30" src="<?php echo e(URL::to('/')); ?>/public/uploads/gallery/pdf_icon.png"></a>
