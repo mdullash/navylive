@@ -1,9 +1,7 @@
-@extends('frontend.layouts.master')
-
-@section('css')
-    <link rel="stylesheet" href="{{ url('public/css/bootstrap-select.css')}}">
-    <link href="{{ asset('public/chosenmultiselect/docsupport/prism.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/chosenmultiselect/chosen.css') }}" rel="stylesheet">
+<?php $__env->startSection('css'); ?>
+    <link rel="stylesheet" href="<?php echo e(url('public/css/bootstrap-select.css')); ?>">
+    <link href="<?php echo e(asset('public/chosenmultiselect/docsupport/prism.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('public/chosenmultiselect/chosen.css')); ?>" rel="stylesheet">
 
     <style>
 
@@ -40,10 +38,10 @@
             padding: 40px 55px 65px;
         }
     </style>
-    @stop
-@section('content')
+    <?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 
-      @include('layouts.flash')
+      <?php echo $__env->make('layouts.flash', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
     <!-- page-header -->
     <div id="inner-page-header" class="page-header position-relative">
@@ -64,7 +62,7 @@
                 <div class="row">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{!! URL::to($a.$b.'login') !!}" class="breadcrumb-link">Supplier Login</a></li>
+                            <li class="breadcrumb-item"><a href="<?php echo URL::to($a.$b.'login'); ?>" class="breadcrumb-link">Supplier Login</a></li>
                             <li class="breadcrumb-item active text-white" aria-current="page">Supplier From Submit</li>
                         </ol>
                     </nav>
@@ -81,11 +79,11 @@
             <div class="container">
                 <div class="row ">
 
-                    @if (Auth::guard('supplier')->check())
+                    <?php if(Auth::guard('supplier')->check()): ?>
                         <div class="col-lg-3 col-md-3 col-3">
-                            @include('frontend/homeinc/menu')
+                            <?php echo $__env->make('frontend/homeinc/menu', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                         </div>
-                    @endif
+                    <?php endif; ?>
 
                     <div class="col-lg-9 col-md-9 col-sm-12 col-9">
                         <!--st-tab-->
@@ -96,9 +94,10 @@
                                         <div class="loginArea">
                                             <!-- form-heading-title -->
 
-                                                @if (Auth::guard('supplier')->check())
+                                                <?php if(Auth::guard('supplier')->check()): ?>
 
-                                                    {{ Form::model($editId, array('url' => '0/0/supplier-form-update', 'method' => 'POST', 'files'=> true, 'class' => 'form form-horizontal validate-form supplier_info_tab', 'id' => 'suppliers')) }}
+                                                    <?php echo e(Form::model($editId, array('url' => '0/0/supplier-form-update', 'method' => 'POST', 'files'=> true, 'class' => 'form form-horizontal validate-form supplier_info_tab', 'id' => 'suppliers'))); ?>
+
 
                                                         <ul class="nav nav-tabs"  role="tablist">
                                                             <li class="nav-item">
@@ -120,7 +119,7 @@
                                                         <!-- Tab panes -->
                                                         <div class="tab-content">
                                                             <div class="tab-pane fade show active" id="company-info" role="tabpanel" aria-labelledby="company-tab">
-                                                            {{--<div role="tabpanel" class="tab-pane active" id="company-info">--}}
+                                                            
                                                                 <div class="col-md-12 col-sm-12 col-md-12">
 
                                                                     <div class="headOffice regFormTitle mt-2">
@@ -128,14 +127,14 @@
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label class="control-label">Company Name (English)</label>
-                                                                                    <input id="company_name" type="text" name="company_name" placeholder="Company Name (English)" value="{!! $editId->company_name !!}" class="form-control" >
+                                                                                    <input id="company_name" type="text" name="company_name" placeholder="Company Name (English)" value="<?php echo $editId->company_name; ?>" class="form-control" >
                                                                                 </div>
                                                                             </div>
 
                                                                              <div class="col-md-6">
                                                                                 <div class="form-group">
                                                                                     <label class="control-label">Company Name (Bengali)</label>
-                                                                                    <input id="company_name_bng" type="text" name="company_name_bng" placeholder="Company Name (Bengali)" value="{!! $editId->company_name_bng !!}" class="form-control" >
+                                                                                    <input id="company_name_bng" type="text" name="company_name_bng" placeholder="Company Name (Bengali)" value="<?php echo $editId->company_name_bng; ?>" class="form-control" >
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -146,14 +145,14 @@
                                                                                 <!-- Head Office Telephone-->
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
-                                                                                    <input type="text" name="mobile_number" placeholder="Mobile No." class="form-control" value="{!! $editId->mobile_number !!}" >
+                                                                                    <input type="text" name="mobile_number" placeholder="Mobile No." class="form-control" value="<?php echo $editId->mobile_number; ?>" >
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <!-- Head Office Fax-->
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
-                                                                                    <input type="text" name="fax" id="fax" placeholder="Fax" class="form-control" value="{!! $editId->fax !!}" >
+                                                                                    <input type="text" name="fax" id="fax" placeholder="Fax" class="form-control" value="<?php echo $editId->fax; ?>" >
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -162,17 +161,17 @@
                                                                                 <!-- Head Office email-->
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
-                                                                                    <input type="email" name="email" placeholder="Email" class="form-control" value="{!! $editId->email !!}" >
+                                                                                    <input type="email" name="email" placeholder="Email" class="form-control" value="<?php echo $editId->email; ?>" >
                                                                                 </div>
                                                                             </div>
 
 
                                                                             <div class="col-md-6">
                                                                                 <select class="form-control chosen-select" name="supply_cat_id[]" id="supply_cat_id"   multiple="multiple" tabindex="4">
-                                                                                    <option value="" disabled="">{!! '- Select -' !!}</option>
-                                                                                    @foreach($supplyCategories as $sc)
-                                                                                        <option value="{!! $sc->id !!}">{!! $sc->description !!}</option>
-                                                                                    @endforeach
+                                                                                    <option value="" disabled=""><?php echo '- Select -'; ?></option>
+                                                                                    <?php $__currentLoopData = $supplyCategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                                        <option value="<?php echo $sc->id; ?>"><?php echo $sc->description; ?></option>
+                                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                                 </select>
                                                                             </div>
 
@@ -184,14 +183,14 @@
                                                                                 <!-- Head Office Address-->
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
-                                                                                    <textarea name="head_office_address" class="form-control" id="head_office_address"  placeholder="Address" >{!! $editId->head_office_address !!}</textarea>
+                                                                                    <textarea name="head_office_address" class="form-control" id="head_office_address"  placeholder="Address" ><?php echo $editId->head_office_address; ?></textarea>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <!--Branch Address-->
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
-                                                                                    <textarea name="branch_office_address" class="form-control" id="branch_office_address" placeholder="Branch Office (If any)">{!! $editId->branch_office_address !!}</textarea>
+                                                                                    <textarea name="branch_office_address" class="form-control" id="branch_office_address" placeholder="Branch Office (If any)"><?php echo $editId->branch_office_address; ?></textarea>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -205,14 +204,14 @@
                                                                                         <!-- Bank Account Number-->
                                                                                         <div class="form-group">
                                                                                             <label class="control-label sr-only"></label>
-                                                                                            <input type="text" name="bank_account_number" placeholder="Account Number" class="form-control" id="bank_account_number" value="{!! $editId->bank_account_number !!}">
+                                                                                            <input type="text" name="bank_account_number" placeholder="Account Number" class="form-control" id="bank_account_number" value="<?php echo $editId->bank_account_number; ?>">
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-md-6">
                                                                                         <!-- Bank Name-->
                                                                                         <div class="form-group">
                                                                                             <label class="control-label sr-only"></label>
-                                                                                            <input type="text" name="bank_name" placeholder="Bank Name" class="form-control" value="{!! $editId->bank_name_and_branch !!}">
+                                                                                            <input type="text" name="bank_name" placeholder="Bank Name" class="form-control" value="<?php echo $editId->bank_name_and_branch; ?>">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -221,14 +220,14 @@
                                                                                         <!-- Relationship-->
                                                                                         <div class="form-group">
                                                                                             <label class="control-label sr-only"></label>
-                                                                                            <input type="text" name="rltn_w_acc_holder" id="rltn_w_acc_holder" placeholder="Relationship with the A/C holder" class="form-control" value="{!! $editId->rltn_w_acc_holder !!}">
+                                                                                            <input type="text" name="rltn_w_acc_holder" id="rltn_w_acc_holder" placeholder="Relationship with the A/C holder" class="form-control" value="<?php echo $editId->rltn_w_acc_holder; ?>">
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-md-6">
                                                                                         <!-- Bank Address-->
                                                                                         <div class="form-group">
                                                                                             <label class="control-label sr-only"></label>
-                                                                                            <textarea name="address" class="form-control" placeholder="Address" >{!! $editId->branch_office_address !!}</textarea>
+                                                                                            <textarea name="address" class="form-control" placeholder="Address" ><?php echo $editId->branch_office_address; ?></textarea>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -242,7 +241,7 @@
                                                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
-                                                                                    <input type="text" name="tin_number" placeholder="Incometax Identification Number" value="{!! $editId->tin_number !!}" class="form-control" >
+                                                                                    <input type="text" name="tin_number" placeholder="Incometax Identification Number" value="<?php echo $editId->tin_number; ?>" class="form-control" >
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
@@ -319,13 +318,13 @@
                                                                     <div class="d-flex">
                                                                         <div class="form-group">
                                                                             <label class="radio_container col-md-12">Yes
-                                                                                <input type="radio" name="defaulter_before" value="Yes" @if($editId->defaulter_before == 'Yes') checked="checked" @endif>
+                                                                                <input type="radio" name="defaulter_before" value="Yes" <?php if($editId->defaulter_before == 'Yes'): ?> checked="checked" <?php endif; ?>>
                                                                                 <span class="checkmark"></span>
                                                                             </label>
                                                                         </div><!--form-group-->
                                                                         <div class="form-group">
                                                                             <label class="radio_container col-md-12">No
-                                                                                <input type="radio" name="defaulter_before" value="No" @if($editId->defaulter_before == 'No') checked="checked" @endif>
+                                                                                <input type="radio" name="defaulter_before" value="No" <?php if($editId->defaulter_before == 'No'): ?> checked="checked" <?php endif; ?>>
                                                                                 <span class="checkmark"></span>
                                                                             </label>
                                                                         </div><!--form-group-->
@@ -340,13 +339,13 @@
                                                                     <div class="companyActArea d-flex">
                                                                         <div class="form-group">
                                                                             <label class="radio_container col-md-12">Yes
-                                                                                <input type="radio" name="company_partnership_act" value="Yes" @if($editId->company_partnership_act == 'Yes') checked="checked" @endif >
+                                                                                <input type="radio" name="company_partnership_act" value="Yes" <?php if($editId->company_partnership_act == 'Yes'): ?> checked="checked" <?php endif; ?> >
                                                                                 <span class="checkmark"></span>
                                                                             </label>
                                                                         </div><!--form-group-->
                                                                         <div class="form-group">
                                                                             <label class="radio_container col-md-12">No
-                                                                                <input type="radio" name="company_partnership_act" value="No" @if($editId->company_partnership_act == 'No') checked="checked" @endif>
+                                                                                <input type="radio" name="company_partnership_act" value="No" <?php if($editId->company_partnership_act == 'No'): ?> checked="checked" <?php endif; ?>>
                                                                                 <span class="checkmark"></span>
                                                                             </label>
                                                                         </div><!--form-group-->
@@ -361,13 +360,13 @@
                                                                     <div class="d-flex">
                                                                         <div class="form-group">
                                                                             <label class="radio_container col-md-12">Sole proprietorship
-                                                                                <input type="radio" name="registered_as" class="soleProship" value="Yes" @if($editId->registered_as == 'Yes') checked="checked" @endif>
+                                                                                <input type="radio" name="registered_as" class="soleProship" value="Yes" <?php if($editId->registered_as == 'Yes'): ?> checked="checked" <?php endif; ?>>
                                                                                 <span class="checkmark"></span>
                                                                             </label>
                                                                         </div><!--form-group-->
                                                                         <div class="form-group">
                                                                             <label class="radio_container col-md-12">Limited company
-                                                                                <input type="radio" name="registered_as" class="soleProship" value="No" @if($editId->registered_as == 'No') checked="checked" @endif>
+                                                                                <input type="radio" name="registered_as" class="soleProship" value="No" <?php if($editId->registered_as == 'No'): ?> checked="checked" <?php endif; ?>>
                                                                                 <span class="checkmark"></span>
                                                                             </label>
                                                                         </div><!--form-group-->
@@ -377,7 +376,7 @@
                                                                 <div class="col-md-12 col-sm-12 col-12" id="des_of_sole_prtship_div">
                                                                     <div class="form-group solePropietorship">
                                                                         <label class="control-label sr-only"></label>
-                                                                        <textarea name="des_of_sole_prtship" id="des_of_sole_prtship" class="form-control" placeholder="Description of Sole Propietorship ">{!! $editId->des_of_sole_prtship !!}</textarea>
+                                                                        <textarea name="des_of_sole_prtship" id="des_of_sole_prtship" class="form-control" placeholder="Description of Sole Propietorship "><?php echo $editId->des_of_sole_prtship; ?></textarea>
                                                                     </div>
                                                                 </div><!--col-->
                                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" id="partnersIfLimtdComDiv" style="display: none;">
@@ -415,41 +414,41 @@
                                                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
-                                                                                    <input type="text" name="vat_registration_number" placeholder="Vat Registration Number" class="form-control" value="{!! $editId->vat_registration_number  !!}" >
+                                                                                    <input type="text" name="vat_registration_number" placeholder="Vat Registration Number" class="form-control" value="<?php echo $editId->vat_registration_number; ?>" >
                                                                                 </div>
                                                                             </div><!--col-->
                                                                             <!-- NID Number -->
                                                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
-                                                                                    <input type="text" name="nid_number" placeholder="NID Number" class="form-control" value="{!! $editId->nid_number  !!}" >
+                                                                                    <input type="text" name="nid_number" placeholder="NID Number" class="form-control" value="<?php echo $editId->nid_number; ?>" >
                                                                                 </div>
                                                                             </div><!--col-->
                                                                             <!-- Trade License Number  -->
                                                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
-                                                                                    <input type="text" name="trade_license_number" placeholder="Trade License Number " class="form-control" value="{!! $editId->trade_license_number  !!}"  >
+                                                                                    <input type="text" name="trade_license_number" placeholder="Trade License Number " class="form-control" value="<?php echo $editId->trade_license_number; ?>"  >
                                                                                 </div>
                                                                             </div><!--col-->
                                                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
-                                                                                    <textarea name="trade_license_address" class="form-control" placeholder="Trade License Address"  >{!! $editId->trade_license_address  !!}</textarea>
+                                                                                    <textarea name="trade_license_address" class="form-control" placeholder="Trade License Address"  ><?php echo $editId->trade_license_address; ?></textarea>
                                                                                 </div>
                                                                             </div><!--col-->
                                                                             <!-- BSTI Certification -->
                                                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
-                                                                                    <input type="text" name="bsti_certification" placeholder="BSTI Certification" class="form-control" value="{!! $editId->bsti_certification  !!}">
+                                                                                    <input type="text" name="bsti_certification" placeholder="BSTI Certification" class="form-control" value="<?php echo $editId->bsti_certification; ?>">
                                                                                 </div>
                                                                             </div><!--col-->
                                                                             <!-- ISO Certification  -->
                                                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
-                                                                                    <input type="text" name="iso_certification" placeholder="ISO Certification" class="form-control" value="{!! $editId->iso_certification  !!}">
+                                                                                    <input type="text" name="iso_certification" placeholder="ISO Certification" class="form-control" value="<?php echo $editId->iso_certification; ?>">
                                                                                 </div>
                                                                             </div><!--col-->
                                                                             <!-- Naval Locations -->
@@ -511,12 +510,12 @@
                                                                                 </div>
                                                                             </div><!--col-->
                                                                             <!-- Attested last educational certificate -->
-                                                                        {{--<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">--}}
-                                                                        {{--<div class="upload_files">--}}
-                                                                        {{--<input type="file" name="att_edu_cert" accept="image/png, image/jpeg,image/jpg" class="authorSig form-control" id="inputFile4" >--}}
-                                                                        {{--<label>Attested educational certificate</label>--}}
-                                                                        {{--</div>--}}
-                                                                        {{--</div><!--col-->--}}
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
                                                                         <!-- Last six months bank statement -->
                                                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                                                 <div class="upload_files">
@@ -559,21 +558,21 @@
                                                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
-                                                                                    <input type="text" name="intr_name[]" placeholder="Introducer Name" class="form-control" value="@if($editId->intr_name != null){!! json_decode($editId->intr_name)[0] !!} @endif" >
+                                                                                    <input type="text" name="intr_name[]" placeholder="Introducer Name" class="form-control" value="<?php if($editId->intr_name != null): ?><?php echo json_decode($editId->intr_name)[0]; ?> <?php endif; ?>" >
                                                                                 </div>
                                                                             </div><!--col-->
                                                                             <!--Introducer Designation-->
                                                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
-                                                                                    <input type="text" name="intr_designation[]" placeholder="Introducer Designation" class="form-control" @if($editId->intr_designation != null){!! json_decode($editId->intr_designation)[0] !!} @endif >
+                                                                                    <input type="text" name="intr_designation[]" placeholder="Introducer Designation" class="form-control" <?php if($editId->intr_designation != null): ?><?php echo json_decode($editId->intr_designation)[0]; ?> <?php endif; ?> >
                                                                                 </div>
                                                                             </div><!--col-->
                                                                             <!-- Introducer Address-->
                                                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
-                                                                                    <textarea name="intr_address[]" class="form-control" placeholder="Introducer Address" >@if($editId->intr_address != null){!! json_decode($editId->intr_address )[0] !!} @endif</textarea>
+                                                                                    <textarea name="intr_address[]" class="form-control" placeholder="Introducer Address" ><?php if($editId->intr_address != null): ?><?php echo json_decode($editId->intr_address )[0]; ?> <?php endif; ?></textarea>
                                                                                 </div>
                                                                             </div><!--col-->
                                                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
@@ -602,7 +601,7 @@
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
 
-                                                                                    <input type="text" name="intr_name[]" placeholder="Introducer Name" class="form-control" @if($editId->intr_name  != null){!! json_decode($editId->intr_name)[1] !!} @endif >
+                                                                                    <input type="text" name="intr_name[]" placeholder="Introducer Name" class="form-control" <?php if($editId->intr_name  != null): ?><?php echo json_decode($editId->intr_name)[1]; ?> <?php endif; ?> >
                                                                                 </div>
                                                                             </div><!--col-->
 
@@ -610,14 +609,14 @@
                                                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
-                                                                                    <input type="text" name="intr_designation[]" placeholder="Introducer Designation" class="form-control" @if($editId->intr_designation != null){!! json_decode($editId->intr_designation)[1] !!} @endif >
+                                                                                    <input type="text" name="intr_designation[]" placeholder="Introducer Designation" class="form-control" <?php if($editId->intr_designation != null): ?><?php echo json_decode($editId->intr_designation)[1]; ?> <?php endif; ?> >
                                                                                 </div>
                                                                             </div><!--col-->
                                                                             <!-- Introducer Address-->
                                                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                                                 <div class="form-group">
                                                                                     <label class="control-label sr-only"></label>
-                                                                                    <textarea name="intr_address[]" class="form-control" placeholder="Introducer Address" >@if($editId->intr_address != null){!! json_decode($editId->intr_address)[1] !!} @endif</textarea>
+                                                                                    <textarea name="intr_address[]" class="form-control" placeholder="Introducer Address" ><?php if($editId->intr_address != null): ?><?php echo json_decode($editId->intr_address)[1]; ?> <?php endif; ?></textarea>
                                                                                 </div>
                                                                             </div><!--col-->
                                                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
@@ -678,7 +677,7 @@
 
                                                             <div class="col-md-12">
 
-                                                                <button type="submit" class="btn btn-primary pull-right" style=" margin-top: 12px;">{!!trans('english.SAVE')!!}</button>
+                                                                <button type="submit" class="btn btn-primary pull-right" style=" margin-top: 12px;"><?php echo trans('english.SAVE'); ?></button>
 
                                                             </div>
 
@@ -686,9 +685,10 @@
 
 
                                                         <!-- <div class="hr-line-dashed"></div> -->
-                                                        {!!   Form::close() !!}
+                                                        <?php echo Form::close(); ?>
 
-                                                @endif
+
+                                                <?php endif; ?>
 
 
                                                 </div><!--row-->
@@ -705,10 +705,10 @@
         </div>
         <!-- /.couple-sign up -->
     </section>
-      <script src="{{ asset('public/chosenmultiselect/chosen.jquery.js') }}"></script>
-      <script src="{{ asset('public/chosenmultiselect/docsupport/prism.js') }}"></script>
-      <script src="{{ asset('public/chosenmultiselect/docsupport/init.js') }}"></script>
-      <script rel="javascript" src="{{ url('public/frontend/js/custom.js') }}"></script>
+      <script src="<?php echo e(asset('public/chosenmultiselect/chosen.jquery.js')); ?>"></script>
+      <script src="<?php echo e(asset('public/chosenmultiselect/docsupport/prism.js')); ?>"></script>
+      <script src="<?php echo e(asset('public/chosenmultiselect/docsupport/init.js')); ?>"></script>
+      <script rel="javascript" src="<?php echo e(url('public/frontend/js/custom.js')); ?>"></script>
 
       <script type="text/javascript">
 
@@ -825,4 +825,6 @@
           });
       </script>
 
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('frontend.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

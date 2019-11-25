@@ -53,6 +53,14 @@ Route::group(['prefix' => 'suppliers'], function () {
     Route::get('supplier-approval/{status}','SupplierApprovalInfoAfterDNSController@waitingForApproved');
 
 
+    Route::get('forward-supplier/','ForwardToSupplierController@index');
+    Route::post('forward-supplier/store','ForwardToSupplierController@store');
+    Route::get('forward-supplier/approve/{id}','ForwardToSupplierController@approve');
+    Route::get('forward-supplier/{id}/view','ForwardToSupplierController@view');
+    Route::post('forward-supplier/update/{id}','ForwardToSupplierController@update');
+    Route::get('forward-supplier/{status}','ForwardToSupplierController@waitingForApproved');
+
+
 
 
     //id card purchase

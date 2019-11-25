@@ -78,8 +78,9 @@ class FrontSupplierController extends Controller
 
                 $data['suppliers']->orderBy('id', 'desc');
                 $forforeach = $data['suppliers']->get();
-                $data['suppliers'] = $data['suppliers']->paginate(10);
 
+                $data['suppliers'] = $data['suppliers']->paginate(20);
+ 
 
 //            $data['importantNotices'] = Notice::where('is_important','=',1)->where('status_id','=',1)->orderBy('id','desc')->get();
 //            $data['categories'] = SupplyCategory::select('id','name')->where('status_id','=',1)->get();
@@ -144,7 +145,7 @@ class FrontSupplierController extends Controller
                 }
                 $data['suppliers']->orderBy('id', 'desc');
                 $forforeach = $data['suppliers']->get();
-                $data['suppliers'] = $data['suppliers']->paginate(10);
+                $data['suppliers'] = $data['suppliers']->paginate(20);
 
             $catIds = array();
             foreach($forforeach as $splc){
@@ -165,7 +166,7 @@ class FrontSupplierController extends Controller
 
             $data['categories'] = SupplyCategory::select('id','name')->whereIn('id',$catIds)->where('status_id','=',1)->get();
 
-        }
+        } 
         $data['navallocation'] = $navalLocation;
 
         $data['zoneInfo'] = $zoneInfo;
@@ -180,56 +181,17 @@ class FrontSupplierController extends Controller
             $data['organizationsHead'][] = $sd->setAttribute('zoneAlise', $zoneAlise->alise);
 
         }
-
+        
         return view('frontend.supplier-list',$data);
 
     }
 
 
-    public function notice(){
-        $data['notices'] = Notice::where('status_id','=',1)->where(function($query){ $query->where(['is_important'=>1,'is_general'=>1])->orWhere('is_general',1); })->where('status_id','=',1)->take(5)->orderBy('id','desc')->get();
-        $navalLocation = NsdName::where('status_id','=',1)->where('default_selected','=',1)->orderBy('id')->first();
-
-        $noticeIds = array();
-        foreach ($data['notices'] as $ntc){
-            if(in_array($navalLocation->id, explode(',',$ntc->nsds_bsds))){
-                $noticeIds[] = $ntc->id;
-            }
-        }
-
-        $data['importantNotices'] = Notice::where(function($query){ $query->where(['is_important'=>1,'is_general'=>1])->orWhere('is_important',1); })->where('status_id','=',1)->orderBy('id','desc')->get();
-        $data['navallocation'] = $navalLocation;
-        $zones=Zone::where('id',$navalLocation->zones)->first();
-        Session::put('zoneAlise',$zones->alise);
-        $zone=$zones->alise;
-        $data['approved']=DB::table($zone.'_supplier_approval_info_after_dns_approval')
-            ->join($zone.'_supplier_approval_after_dns_approval',$zone.'_supplier_approval_after_dns_approval.id','=',$zone.'_supplier_approval_info_after_dns_approval.approve_id')
-            ->where($zone.'_supplier_approval_after_dns_approval.status','approved')
-            ->where($zone.'_supplier_approval_info_after_dns_approval.supplier_id', Auth::guard('supplier')->id())
-            ->count();
-        $data['organizations'] = NsdName::whereNotIn('id',[$navalLocation->id])->where('status_id','=',1)->get();
-
-        $data['organizationsHead'] = [];
-
-        foreach ($data['organizations'] as $sd){
-            $exp = explode(',',$sd->zones);
-            $exp = $exp[0];
-            $zoneAlise = Zone::where('id','=',$exp)->first();
-            $data['organizationsHead'][] = $sd->setAttribute('zoneAlise', $zoneAlise->alise);
-
-        }
-
-
-        return $data;
-    }
 
     public  function supplier_submit(){
-        $data=$this->notice();
-        $editId = Supplier::find(Auth::guard('supplier')->id());
-        //$supplyCategories = SupplyCategory::whereIn('id',$zonesRltdCtgIds)->where('status_id','=',1)->get();
-        $supplyCategories = SupplyCategory::where('status_id','=',1)->get();
 
-        return view('frontend.supplier-from-submit',$data,compact('editId','supplyCategories'));
+        $editId = Supplier::find(Auth::guard('supplier')->id());
+        return view('frontend.supplier-from-submit',compact('editId'));
 
     }
 
@@ -251,7 +213,6 @@ class FrontSupplierController extends Controller
 
             $supplier = Supplier::find(Auth::guard('supplier')->id());
             $supplier->company_name = $request->company_name;
-            $supplier->company_name_bng = $request->company_name_bng;
             $supplier->mobile_number = $request->mobile_number;
             $supplier->fax = empty($request->fax) ? null : $request->fax;
             $supplier->email = $request->email;
@@ -292,8 +253,6 @@ class FrontSupplierController extends Controller
                 $supplier->profile_pic = $logofilename;
             }
 
-
-
             if (Input::hasFile('tin_certificate')) {
                 $file = Input::file('tin_certificate');
                 $destinationPath = public_path() . '/uploads/supplier_profile/';
@@ -303,7 +262,7 @@ class FrontSupplierController extends Controller
             }
 
             $testimonialArray = array();
-            if (is_array($request->testimonial) && count($request->testimonial) > 0 ) {
+            if (count($request->testimonial) > 0) {
                 for ($i = 0; count($request->testimonial) > $i; $i++) {
                     if (!empty($request->testimonial[$i])) {
                         $file = $request->testimonial[$i];
@@ -316,7 +275,7 @@ class FrontSupplierController extends Controller
                 $supplier->testimonial = json_encode($testimonialArray);
             }
             $banglaSigArray = array();
-            if (is_array($request->bangla_signature) && count($request->bangla_signature) > 0) {
+            if (count($request->bangla_signature) > 0) {
                 for ($i = 0; count($request->bangla_signature) > $i; $i++) {
                     if (!empty($request->bangla_signature[$i])) {
                         $file = $request->bangla_signature[$i];
@@ -329,7 +288,7 @@ class FrontSupplierController extends Controller
                 $supplier->bangla_signature = json_encode($banglaSigArray);
             }
             $englishSigArray = array();
-            if (is_array($request->english_signature) && count($request->english_signature) > 0) {
+            if (count($request->english_signature) > 0) {
                 for ($i = 0; count($request->english_signature) > $i; $i++) {
                     if (!empty($request->english_signature[$i])) {
                         $file = $request->english_signature[$i];
@@ -406,8 +365,6 @@ class FrontSupplierController extends Controller
                 $supplier->att_edu_cert = $att_edu_cert;
             }
 
-
-
             if (Input::hasFile('lst_six_mnth_bnk_sttmnt')) {
                 $file = Input::file('lst_six_mnth_bnk_sttmnt');
                 $destinationPath = public_path() . '/uploads/supplier_profile/';
@@ -434,22 +391,13 @@ class FrontSupplierController extends Controller
 
             if ($supplier->save()) {
 
-                //dd($request->authorized_person_signature[0]);
-
                 for($i=0; count($request->name)>$i; $i++){
                     $supplierMultiInfo              = new SupplierMultiInfo();
                     $supplierMultiInfo->supplier_id = $supplier->id;
                     $supplierMultiInfo->name = empty($request->name[$i]) ? null : $request->name[$i];
                     $supplierMultiInfo->designation = empty($request->designation[$i]) ? null : $request->designation[$i];
                     $supplierMultiInfo->mobile_number1 = empty($request->mobile_number1[$i]) ? null : $request->mobile_number1[$i];
-
-                    if (Input::hasFile('authorized_person_signature')) {
-                        $file = Input::file('authorized_person_signature')[$i];
-                        $destinationPath = public_path() . '/uploads/authorized_signature/';
-                        $authorized_person_signature = uniqid() . $file->getClientOriginalName();
-                        $uploadSuccess = Input::file('authorized_person_signature')[$i]->move($destinationPath, $authorized_person_signature);
-                        $supplierMultiInfo->authorized_signature = $authorized_person_signature;
-                    }
+                    $supplierMultiInfo->barcode_number = empty($request->barcode_number1[$i]) ? null : $request->barcode_number1[$i];
                     $supplierMultiInfo->save();
                 }
 

@@ -78,7 +78,7 @@ class FrontSupplierController extends Controller
 
                 $data['suppliers']->orderBy('id', 'desc');
                 $forforeach = $data['suppliers']->get();
-                $data['suppliers'] = $data['suppliers']->paginate(10);
+                $data['suppliers'] = $data['suppliers']->paginate(20);
 
 
 //            $data['importantNotices'] = Notice::where('is_important','=',1)->where('status_id','=',1)->orderBy('id','desc')->get();
@@ -144,7 +144,7 @@ class FrontSupplierController extends Controller
                 }
                 $data['suppliers']->orderBy('id', 'desc');
                 $forforeach = $data['suppliers']->get();
-                $data['suppliers'] = $data['suppliers']->paginate(10);
+                $data['suppliers'] = $data['suppliers']->paginate(20);
 
             $catIds = array();
             foreach($forforeach as $splc){
@@ -226,10 +226,7 @@ class FrontSupplierController extends Controller
     public  function supplier_submit(){
         $data=$this->notice();
         $editId = Supplier::find(Auth::guard('supplier')->id());
-        //$supplyCategories = SupplyCategory::whereIn('id',$zonesRltdCtgIds)->where('status_id','=',1)->get();
-        $supplyCategories = SupplyCategory::where('status_id','=',1)->get();
-
-        return view('frontend.supplier-from-submit',$data,compact('editId','supplyCategories'));
+        return view('frontend.supplier-from-submit',$data,compact('editId'));
 
     }
 
@@ -251,7 +248,6 @@ class FrontSupplierController extends Controller
 
             $supplier = Supplier::find(Auth::guard('supplier')->id());
             $supplier->company_name = $request->company_name;
-            $supplier->company_name_bng = $request->company_name_bng;
             $supplier->mobile_number = $request->mobile_number;
             $supplier->fax = empty($request->fax) ? null : $request->fax;
             $supplier->email = $request->email;
@@ -292,8 +288,6 @@ class FrontSupplierController extends Controller
                 $supplier->profile_pic = $logofilename;
             }
 
-
-
             if (Input::hasFile('tin_certificate')) {
                 $file = Input::file('tin_certificate');
                 $destinationPath = public_path() . '/uploads/supplier_profile/';
@@ -303,7 +297,7 @@ class FrontSupplierController extends Controller
             }
 
             $testimonialArray = array();
-            if (is_array($request->testimonial) && count($request->testimonial) > 0 ) {
+            if (count($request->testimonial) > 0) {
                 for ($i = 0; count($request->testimonial) > $i; $i++) {
                     if (!empty($request->testimonial[$i])) {
                         $file = $request->testimonial[$i];
@@ -316,7 +310,7 @@ class FrontSupplierController extends Controller
                 $supplier->testimonial = json_encode($testimonialArray);
             }
             $banglaSigArray = array();
-            if (is_array($request->bangla_signature) && count($request->bangla_signature) > 0) {
+            if (count($request->bangla_signature) > 0) {
                 for ($i = 0; count($request->bangla_signature) > $i; $i++) {
                     if (!empty($request->bangla_signature[$i])) {
                         $file = $request->bangla_signature[$i];
@@ -329,7 +323,7 @@ class FrontSupplierController extends Controller
                 $supplier->bangla_signature = json_encode($banglaSigArray);
             }
             $englishSigArray = array();
-            if (is_array($request->english_signature) && count($request->english_signature) > 0) {
+            if (count($request->english_signature) > 0) {
                 for ($i = 0; count($request->english_signature) > $i; $i++) {
                     if (!empty($request->english_signature[$i])) {
                         $file = $request->english_signature[$i];
@@ -406,8 +400,6 @@ class FrontSupplierController extends Controller
                 $supplier->att_edu_cert = $att_edu_cert;
             }
 
-
-
             if (Input::hasFile('lst_six_mnth_bnk_sttmnt')) {
                 $file = Input::file('lst_six_mnth_bnk_sttmnt');
                 $destinationPath = public_path() . '/uploads/supplier_profile/';
@@ -434,22 +426,13 @@ class FrontSupplierController extends Controller
 
             if ($supplier->save()) {
 
-                //dd($request->authorized_person_signature[0]);
-
                 for($i=0; count($request->name)>$i; $i++){
                     $supplierMultiInfo              = new SupplierMultiInfo();
                     $supplierMultiInfo->supplier_id = $supplier->id;
                     $supplierMultiInfo->name = empty($request->name[$i]) ? null : $request->name[$i];
                     $supplierMultiInfo->designation = empty($request->designation[$i]) ? null : $request->designation[$i];
                     $supplierMultiInfo->mobile_number1 = empty($request->mobile_number1[$i]) ? null : $request->mobile_number1[$i];
-
-                    if (Input::hasFile('authorized_person_signature')) {
-                        $file = Input::file('authorized_person_signature')[$i];
-                        $destinationPath = public_path() . '/uploads/authorized_signature/';
-                        $authorized_person_signature = uniqid() . $file->getClientOriginalName();
-                        $uploadSuccess = Input::file('authorized_person_signature')[$i]->move($destinationPath, $authorized_person_signature);
-                        $supplierMultiInfo->authorized_signature = $authorized_person_signature;
-                    }
+                    $supplierMultiInfo->barcode_number = empty($request->barcode_number1[$i]) ? null : $request->barcode_number1[$i];
                     $supplierMultiInfo->save();
                 }
 
